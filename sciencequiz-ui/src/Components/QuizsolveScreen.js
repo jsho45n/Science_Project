@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 const QuizsolveScreen = () => {
 
-    const [login, setLogin] = useState(true);
+    const [login, setLogin] = useState(false);
 
     const removetoken = (e) => {
         localStorage.removeItem('token');
