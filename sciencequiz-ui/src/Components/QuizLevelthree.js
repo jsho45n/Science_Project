@@ -41,7 +41,7 @@ const QuizLevelthree = () => {
 
     return (
         <div>
-            <Quizitem key={quizes.level} quizes={quizes} />
+            <Quizitem key={quizes.qesname} quizes={quizes} />
         </div>
     );
 };
