@@ -1,7 +1,6 @@
 import React from 'react';
 import './QuizsolveScreen.css';
 import { useState, useEffect } from 'react';
-import { } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
