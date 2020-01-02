@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    justify-content: center;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+
+
+.login-form {
+    margin-top: 248px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+.login-input {
+    width: 350px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+.login-form-button {
+    width: 349px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+.login-form-register-button {
+    width: 349px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+.register-form-register-button {
+    width: 472px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+

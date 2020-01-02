@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    background: url(https://source.unsplash.com/pwcKF7L4-no/1920x1080);
+    background-size: cover;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+p {
+    margin-top: 290px;
+    margin-left: 70px;
+    margin-right: 70px;
+    color: #ffffff;
+    font-size: 50px;
+    font-family: 'Mansalva', cursive;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+.button {
+    margin-top: -38px;
+    margin-left: 150px;
+    width: 550px;
+    height: 60px;
+    font-size: 40px;
+    font-family: 'Nanum Pen Script', cursive; 
+    border: 2px solid black;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;        
+    }
+}
+
+.button:hover {
+    background-color: #00D8FF;
+}

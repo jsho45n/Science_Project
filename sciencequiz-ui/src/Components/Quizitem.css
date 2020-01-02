@@ -1,0 +1,12 @@
+.quizview {
+    width: 850px;
+    height: 550px;
+    background-color: #ffffff;
+    margin-top: 100px;
+}
+
+.quizimage img {
+    width: 850px;
+    height: 290px;
+}
+
