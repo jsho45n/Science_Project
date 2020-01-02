@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const QuizStartScreen = () => {
     return (
         <div>
-            <p>과학퀴즈 누가누가 더 빨리 풀까?</p>
+            <p>Funny Science Quiz (FSQ)</p>
             <Button className="button" type="primary">
                 <Link to="/login">과학퀴즈시작하기</Link>
             </Button>
