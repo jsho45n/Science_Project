@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 const QuizLevelone = ({ quizes, history }) => {
 
     const [answer, setAnswer] = useState('');
-    const { qesname, qesContent, qesImage, qesAnswer } = quizes;
+    const { qesname, qesContent, qesimg, qesAnswer } = quizes;
 
     var correctanswer = 0;
     var quizlength = 0;
@@ -31,9 +31,9 @@ const QuizLevelone = ({ quizes, history }) => {
         <div>
             <form action="https://10.156.147.202:3000/api/question/upload" method="post" onSubmit={handlesubmit}>
                 <div className="quizview">
-                    {qesImage && (
+                    {qesimg && (
                         <div className="quizimage">
-                            <img src={qesImage} alt="quizimage" />
+                            <img src={qesimg} alt="quizimage" />
                         </div>
                     )}
                     <div className="contents">
