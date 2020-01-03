@@ -26,7 +26,7 @@ const QuizsolveScreen = () => {
         }
         else {
             setLogin(true);
-            alert("로그인 실패");
+            alert("로그인 ");
         }
     }, []);
 
