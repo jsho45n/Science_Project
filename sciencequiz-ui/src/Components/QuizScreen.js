@@ -2,7 +2,7 @@ import './QuizScreen.css';
 import { Button, Form, Input, Icon, Modal } from 'antd';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 
 
@@ -25,20 +25,21 @@ const QuizScreen = ({ history }) => {
             password: login.password
         }).then(result => {
             console.log(result);
-            if (result.status === 403) {
-                alert("로그인 실패");
-                history.push('/login');
-            }
-            return result.data.token;
-        }).then(token => {
-            if (token) {
-                localStorage.setItem("token", JSON.stringify(token, login.id, login.password));
+            if (result.status === 200) {
+                alert("로그인 성공!");
+                localStorage.setItem("token", JSON.stringify(result.data.token));
                 history.push('/quiz');
             }
+            else if (result.status === 403) {
+                alert("로그인 실패");
+                return <Redirect to="/login" />
+            }
             else {
-                return;
+                alert("로그인 실패");
+                return <Redirect to="/login" />
             }
         }).catch(error => console.log(error))
+        console.log('요청함.');
     }
 
 
@@ -55,6 +56,9 @@ const QuizScreen = ({ history }) => {
             nick: register.userNick
         }).then(result => {
             console.log(result);
+            if (result.status === 409) {
+                alert("아이디 중복");
+            }
             window.location.reload();
         }).catch(error => console.log(error))
         console.log('요청함');
