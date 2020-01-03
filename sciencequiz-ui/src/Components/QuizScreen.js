@@ -29,14 +29,14 @@ const QuizScreen = ({ history }) => {
                 alert("로그인 성공!");
                 localStorage.setItem("token", JSON.stringify(result.data.token));
                 history.push('/quiz');
+                return <Redirect to="/quiz" />
             }
             else if (result.status === 403) {
                 alert("로그인 실패");
                 return <Redirect to="/login" />
             }
             else {
-                alert("로그인 실패");
-                return <Redirect to="/login" />
+                return;
             }
         }).catch(error => console.log(error))
         console.log('요청함.');
