@@ -12,12 +12,12 @@ const QuizLevelthree = () => {
 
 
     useEffect(() => {
-        const token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")).token : null;
+        const token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null;
         const fetchData = async () => {
             setLoading(true);
             try {
                 const response = await axios.get(('https://10.156.147.202:3000/api/question/upload'), {
-                    header: token,
+                    headers: token,
                     level: 3,
                 });
                 setQuiz(response.data.quizes);
