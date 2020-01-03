@@ -21,12 +21,12 @@ const QuizsolveScreen = () => {
         const token = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null;
         if (token === null) {
             setLogin(false);
-            alert("로그인 실패!");
+            alert("로그인 실패");
             return <Redirect to="/login" />
         }
         else {
             setLogin(true);
-            alert("로그인 ");
+            alert("로그인 성공!");
         }
     }, []);
 
