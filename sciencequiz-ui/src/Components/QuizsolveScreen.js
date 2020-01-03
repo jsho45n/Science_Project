@@ -1,15 +1,15 @@
 import React from 'react';
 import './QuizsolveScreen.css';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { } from 'react-router-dom';
 import { Button } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 
 const QuizsolveScreen = () => {
 
-    const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState(null);
 
     const removetoken = (e) => {
         localStorage.removeItem('token');
@@ -18,20 +18,16 @@ const QuizsolveScreen = () => {
 
 
     useEffect(() => {
-        const token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")).token : null;
-        axios.post(("http://10.156.147.202:3000/api/user/login"), {
-            headers: token
-        }).then(result => {
-            console.log(result.status);
-            if (result.status === 200) {
-                setLogin(true);
-                alert("로그인 성공!");
-            }
-            else {
-                setLogin(false);
-                alert("로그인 실패");
-            }
-        }).catch(error => console.log(error))
+        const token = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : null;
+        if (token === null) {
+            setLogin(false);
+            alert("로그인 실패!");
+            return <Redirect to="/login" />
+        }
+        else {
+            setLogin(true);
+            alert("로그인 실패");
+        }
     }, []);
 
 
