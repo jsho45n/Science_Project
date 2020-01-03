@@ -16,10 +16,7 @@ const QuizLevelthree = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(('https://10.156.147.202:3000/api/question/upload'), {
-                    headers: token,
-                    level: 3,
-                });
+                const response = await axios.get(('https://10.156.147.202:3000/api/question/upload'), { level: "3" }, { headers: token });
                 setQuiz(response.data.quizes);
             }
             catch (e) {
