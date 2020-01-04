@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 
-const QuizLeveltwo = () => {
+const QuizLevelone = () => {
     const [quizes, setQuiz] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -14,9 +14,18 @@ const QuizLeveltwo = () => {
     useEffect(() => {
         const token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null;
         const fetchData = async () => {
+            console.log("요청함.");
             setLoading(true);
             try {
-                const response = await axios.get(('https://10.156.147.202:3000/api/question/upload'), { level: "2" }, { headers: token });
+                const response = await axios.get(('http://10.156.147.202:3000/api/question/upload'),
+                    {
+                        level: "2"
+                    },
+                    {
+                        headers: {
+                            'x-access-token': token
+                        }
+                    });
                 setQuiz(response.data.quizes);
             }
             catch (e) {
@@ -29,7 +38,6 @@ const QuizLeveltwo = () => {
 
     if (loading) {
         alert("로딩중...");
-        return null;
     }
 
     if (!quizes) {
@@ -44,4 +52,4 @@ const QuizLeveltwo = () => {
 };
 
 
-export default QuizLeveltwo;
+export default QuizLevelone;
