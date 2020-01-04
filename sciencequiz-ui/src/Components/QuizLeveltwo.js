@@ -26,7 +26,7 @@ const QuizLevelone = () => {
                             'x-access-token': token
                         }
                     });
-                setQuiz(response.data.quizes);
+                setQuiz(response.data);
             }
             catch (e) {
                 console.log(e);
