@@ -29,7 +29,7 @@ const QuizLevelone = ({ quizes, history }) => {
 
     return (
         <div>
-            <form action="https://10.156.147.202:3000/api/question/upload" method="post" onSubmit={handlesubmit}>
+            <form action="http://10.156.147.202:3000/api/question/upload" method="post" onSubmit={handlesubmit}>
                 <div className="quizview">
                     {qesimg && (
                         <div className="quizimage">
