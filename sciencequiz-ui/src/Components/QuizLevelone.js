@@ -14,9 +14,18 @@ const QuizLevelone = () => {
     useEffect(() => {
         const token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null;
         const fetchData = async () => {
+            console.log("요청함.");
             setLoading(true);
             try {
-                const response = await axios.get(('https://10.156.147.202:3000/api/question/upload'), { level: "1" }, { headers: token });
+                const response = await axios.get(('http://10.156.147.202:3000/api/question/upload'),
+                    {
+                        level: "1"
+                    },
+                    {
+                        headers: {
+                            'x-access-token': token
+                        }
+                    });
                 setQuiz(response.data.quizes);
             }
             catch (e) {
