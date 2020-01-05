@@ -4,9 +4,9 @@ import axios from 'axios';
 
 
 
-const QuizLevelone = () => {
-    const [quizes, setQuiz] = useState(null);
-    const [loading, setLoading] = useState(false);
+const QuizLevelthree = () => {
+    const [chooseArray, setchooseArray] = useState(null);
+    const [loading, setLoading] = useState(true);
 
 
 
@@ -17,7 +17,7 @@ const QuizLevelone = () => {
             console.log("요청함.");
             setLoading(true);
             try {
-                const response = await axios.get(('http://10.156.147.202:3000/api/question/upload'),
+                const response = await axios.post(('http://10.156.147.202:3000/api/question/upload'),
                     {
                         level: "3"
                     },
@@ -26,7 +26,8 @@ const QuizLevelone = () => {
                             'x-access-token': token
                         }
                     });
-                setQuiz(response.data);
+                setchooseArray(response.data.chooseArray);
+                console.log(response);
             }
             catch (e) {
                 console.log(e);
@@ -40,16 +41,16 @@ const QuizLevelone = () => {
         alert("로딩중...");
     }
 
-    if (!quizes) {
+    if (!chooseArray) {
         return null;
     }
 
     return (
         <div>
-            <Quizitem key={quizes.qesname} quizes={quizes} />
+            <Quizitem key={chooseArray[0].qesname} chooseArray={chooseArray} />
         </div>
     );
 };
 
 
-export default QuizLevelone;
+export default QuizLevelthree;
