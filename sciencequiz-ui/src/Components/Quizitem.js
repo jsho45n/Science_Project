@@ -1,56 +1,67 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Quizitem.css';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import { Input } from 'antd';
+var correctanswer = 0;
+var quizlength = 0;
 
-const QuizLevelone = ({ chooseArray, history }) => {
+const Quizitem = ({ next, chooseArray, history, number }) => {
 
     const [answer, setAnswer] = useState({ answer: '' });
     const [quesname, setQuesname] = useState({ quesname: '' });
-    const { qesname, qesContent, qesimg } = chooseArray[0];
-    var i = chooseArray[0];
-    var correctanswer = 0;
-    var quizlength = 0;
+    const { qesname, qesContent, qesimg } = chooseArray[number];
+
+
 
     const answerhandleChange = (event) => {
         setAnswer({ Answer: event.target.value })
         setQuesname({ qesname: event.target.name })
     }
 
+
     const handlesubmit = e => {
+        console.log(chooseArray);
         console.log(quesname.qesname);
         console.log(answer.Answer);
+        console.log(quizlength);
+        console.log(correctanswer);
         axios.post(("http://10.156.147.202:3000/api/question/check"), {
             qesname: quesname.qesname,
             Answer: answer.Answer
         }).then(result => {
             console.log(result);
+            console.log(result.status)
             if (result.status === 200) {
                 correctanswer = correctanswer + 1;
+                console.log(correctanswer);
                 quizlength = quizlength + 1;
-                i = i + 1;
+                console.log(quizlength);
+                next();
+            }
+            else if (result.status === 409) {
+                quizlength = quizlength + 1;
+                console.log('틀림');
+                console.log(quizlength);
+                next();
             }
             if (quizlength === chooseArray.length) {
-                alert("수고하셨습니다! 모든 문제를 푸셨습니다!");
-                alert("당신이 맞은 문제의 개수는 ? : ", { correctanswer });
-                history.push('/quiz');
-            }
-            else {
-                quizlength = quizlength + 1;
-                i = i + 1;
+                alert("모든 문제를 풀었습니다!");
+                alert(`당신이 맞힌 문제의 개수는? : ${correctanswer}`);
+                window.location.href = "/quiz";
             }
         }).catch(error => console.log(error))
     }
 
+
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            handlesubmit(e);
+            handlesubmit();
+            next();
         }
     }
 
-    useEffect(() => {
-        console.log(chooseArray);
-    }, []);
+
 
     return (
         <div>
@@ -61,15 +72,15 @@ const QuizLevelone = ({ chooseArray, history }) => {
                     </div>
                 )}
                 <div className="contents">
-                    <h2>{qesname}</h2>
+                    <h1>{qesname}</h1>
                     <br />
                     <br />
                     <h2>{qesContent}</h2>
-                    <input name={qesname} className="inputanswer" type="text" onChange={answerhandleChange} onKeyPress={handleKeyPress} />
+                    <Input name={qesname} className="inputanswer" type="text" onChange={answerhandleChange} onKeyPress={handleKeyPress} placeholder="정답은?" />
                 </div>
             </div>
         </div >
     );
 };
 
-export default withRouter(QuizLevelone);
+export default withRouter(Quizitem);
