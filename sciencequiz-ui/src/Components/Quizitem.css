@@ -10,3 +10,23 @@
     height: 290px;
 }
 
+.inputanswer {
+    position: fixed;
+    width: 50%;
+    margin-top: 350px;
+    margin-left: 200px;
+    border-radius: 5px;
+    border-style: 1px solid black;
+}
+
+
+h1 {
+    margin-left: 420px;
+    margin-top: 15px;
+}
+
+h2 {
+    margin-left: 420px;
+    margin-top: 15px;
+}
+
