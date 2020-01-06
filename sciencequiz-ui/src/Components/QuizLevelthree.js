@@ -4,11 +4,17 @@ import axios from 'axios';
 
 
 
+
 const QuizLevelthree = () => {
     const [chooseArray, setchooseArray] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(null);
+    const [index, setIndex] = useState(0);
 
 
+    const next = () => {
+        setIndex(index + 1);
+
+    }
 
 
     useEffect(() => {
@@ -37,6 +43,7 @@ const QuizLevelthree = () => {
         fetchData();
     }, []);
 
+
     if (loading) {
         alert("로딩중...");
     }
@@ -45,9 +52,11 @@ const QuizLevelthree = () => {
         return null;
     }
 
+
+
     return (
         <div>
-            <Quizitem key={chooseArray[0].qesname} chooseArray={chooseArray} />
+            <Quizitem number={index} key={index} chooseArray={chooseArray} next={next} />
         </div>
     );
 };
