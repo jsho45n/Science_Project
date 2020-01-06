@@ -39,7 +39,7 @@ const Quizitem = ({ next, chooseArray, history, number }) => {
                 console.log(quizlength);
                 next();
             }
-            else if (result.status === 409) {
+            else if (result.status === 201) {
                 quizlength = quizlength + 1;
                 console.log('틀림');
                 console.log(quizlength);
