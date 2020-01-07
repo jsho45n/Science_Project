@@ -7,4 +7,6 @@
 - Front-end : 전세훈
 ## 개발기간
 12/23 ~ 1/5
+## 구현모습 보는 곳
+https://blog.naver.com/tpgns0223/221762536091
 
