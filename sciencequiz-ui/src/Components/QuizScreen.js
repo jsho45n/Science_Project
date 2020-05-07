@@ -11,7 +11,7 @@ const QuizScreen = ({ history }) => {
 
 
     const [login, setLogin] = useState({ id: '', password: '' })
-    const [register, setRegister] = useState({ id: '', password: '', nick: '' })
+    const [register, setRegister] = useState({ id: '', password: '', userNick: '' })
 
 
     const loginhandleChange = (event) => {
